@@ -1,5 +1,5 @@
 module.exports = {
-  base: "/Blog/",
+  base: "/",
   title: "Blog",
   ga: "",
   description: "个人工作资料与笔记",
