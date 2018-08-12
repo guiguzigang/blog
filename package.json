@@ -1,0 +1,28 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "个人工作资料与笔记",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "dev": "vuepress dev ./docs",
+    "build": "vuepress build ./docs",
+    "deploy": "sh build/deploy.sh"
+  },
+  "keywords": [
+    "前端",
+    "html",
+    "css",
+    "javascript",
+    "vue",
+    "react",
+    "node"
+  ],
+  "author": "guiguzigang",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^0.14.1"
+  }
+}
