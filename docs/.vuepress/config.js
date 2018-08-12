@@ -1,5 +1,5 @@
 module.exports = {
-  base: "/",
+  base: "/blog/",
   title: "Blog",
   ga: "",
   description: "个人工作资料与笔记",
@@ -19,7 +19,7 @@ module.exports = {
     }
   },
   themeConfig: {
-    repo: "guiguzigang/Blog",
+    repo: "guiguzigang/blog",
     docsDir: "docs",
     editLinks: true,
     editLinkText: "欢迎指正",
@@ -110,4 +110,4 @@ module.exports = {
       ]
     }
   }
-};
+}

@@ -4,7 +4,7 @@ set -e
 
 npm run build
 
-cd .vuepress/dist
+cd docs/.vuepress/dist
 
 git init
 git config user.name 'guiguzigang'
