@@ -1,3 +1,31 @@
-# 问题解决笔记
+# Generatator 实现长轮询
 
-记录个人工作中解决的一些前端问题、及日常生活的随笔
+```js
+// generatator函数
+const longPoll = function*() {
+  yield new Promise( (resolve, reject) => {
+    fetch("http://example.com/movies.json")
+      .then(response => response.json())
+      .then(res => resolve(res))
+      .catch(err => {
+        console.error('Error:', error)
+        reject(err)
+      )
+  })
+}
+
+const pull = _ => {
+  const genertaor = longPoll()
+  const step = genertaor.next()
+  step.value.then(res => {
+    if(res.success){
+      setTimeout(function () {
+        console.info('wait')
+        pull()
+      }, 1000)
+    }else{
+      console.info(res)
+    }
+  })
+}
+```
