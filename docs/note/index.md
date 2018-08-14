@@ -8,9 +8,9 @@ const longPoll = function*() {
       .then(response => response.json())
       .then(res => resolve(res))
       .catch(err => {
-        console.error('Error:', error)
+        console.error('Error:', err)
         reject(err)
-      )
+      })
   })
 }
 
