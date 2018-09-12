@@ -34,3 +34,17 @@ D:.
 ```
 
 3. 保存文件夹结构目录 tree /f >filename.txt
+
+## 激活处于通知状态的WIN10系统专业版
+
+1.管理员身份打开命令提示符，输入`slmgr.vbs -xpr`，查看系统的状态是什么时候到期或者是处于通知状态
+
+2.卸载系统秘钥：`slmgr.vbs /upk`
+
+3.安装系统秘钥：`slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX`
+
+4.设置密钥管理服务计算机名为zh.us.to：`slmgr /skms zh.us.to`
+
+5.激活系统：`slmgr /ato`
+
+6.输入`slmgr.vbs -xpr`再次查看系统状态

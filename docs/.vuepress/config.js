@@ -85,6 +85,13 @@ module.exports = {
             "vuex/",
             'vuex/hotreload'
           ]
+        },
+        {
+          title: '微信',
+          collapsable: false,
+          children: [
+            "weixin/"
+          ]
         }
       ],
       "/framework/react/": [
