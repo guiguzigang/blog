@@ -2,7 +2,7 @@
 home: true
 heroImage: /BruceLee.jpg
 actionText: 开始阅读
-actionLink: /note/
+actionLink: /base/
 features:
   - title: 前端问题解决
     details: 记录个人工作中解决的一些前端问题、及日常生活的随笔

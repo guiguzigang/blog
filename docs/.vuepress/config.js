@@ -3,6 +3,11 @@ module.exports = {
   title: "Blog",
   ga: "",
   description: "个人工作资料与笔记",
+  resolve: {
+    alias: {
+      'img': './public/img'
+    }
+  },
   head: [
     [
       "link",
@@ -36,8 +41,15 @@ module.exports = {
     },
     nav: [
       {
-        text: "笔记",
-        link: "/note/"
+        text: "前端技术栈",
+        link: "/base/"
+        // items: [
+        //   { text: "JavaScript", link: "/base/js/" },
+        //   { text: "CSS", link: "/base/css/" },
+        //   { text: "HTTP", link: "/base/http/" },
+        //   { text: "NodeJs", link: "/base/node/" },
+        //   { text: "命令行工具", link: "/base/command/" }
+        // ]
       },
       {
         text: "框架",
@@ -57,30 +69,118 @@ module.exports = {
       }
     ],
     sidebar: {
-      "/note/": [
+      "/base/": [
         {
-          title: "笔记",
+          title: "前端技术栈",
           collapsable: false,
           children: [
-            // "",
-            "command"
+            ''
           ]
+        },
+        {
+          title: "JavaScript",
+          collapsable: true,
+          children: [
+            'js/dom-event',
+            'js/scopechain',
+            "js/prototype",
+            "js/class",
+            'js/generator'
+          ]
+        },
+        {
+          title: "CSS",
+          collapsable: true,
+          children: [
+            "css/box-model"
+          ]
+        },
+        {
+          title: "NodeJs",
+          collapsable: true,
+          children: ["node/"]
+        },
+        {
+          title: "HTTP协议",
+          collapsable: true,
+          children: ["http/"]
+        },
+        {
+          title: "命令行工具",
+          collapsable: true,
+          children: ["command/"]
         }
       ],
+      // "/base/js/": [
+      //   {
+      //     title: "JavaScript",
+      //     collapsable: false,
+      //     children: [
+      //       // ''
+      //     ]
+      //   },
+      //   {
+      //     title: "DOM事件",
+      //     collapsable: false,
+      //     children: [
+      //       // '',
+      //       'dom-event/',
+      //       // 'scopechain/',
+      //       // "prototype/",
+      //       // 'generator/'
+      //     ]
+      //   }
+      // ],
+      // "/base/css/": [
+      //   {
+      //     title: "CSS",
+      //     collapsable: false,
+      //     children: [
+      //       "box-model/"
+      //     ]
+      //   }
+      // ],
+      // "/base/http/": [
+      //   {
+      //     title: "HTTP协议",
+      //     collapsable: false,
+      //     children: [
+      //       ""
+      //     ]
+      //   }
+      // ],
+      // "/base/node/": [
+      //   {
+      //     title: "NodeJs",
+      //     collapsable: false,
+      //     children: [
+      //       ""
+      //     ]
+      //   }
+      // ],
+      // "/base/command/": [
+      //   {
+      //     title: "命令行工具",
+      //     collapsable: false,
+      //     children: [
+      //       ""
+      //     ]
+      //   }
+      // ],
       "/framework/vue/": [
         {
           title: "Vue",
-          collapsable: false,
+          collapsable: true,
           children: [""]
         },
         {
           title: "Vue-Router",
-          collapsable: false,
+          collapsable: true,
           children: ["vue-router/"]
         },
         {
           title: 'Vuex',
-          collapsable: false,
+          collapsable: true,
           children: [
             "vuex/",
             'vuex/hotreload'
@@ -88,7 +188,7 @@ module.exports = {
         },
         {
           title: '微信',
-          collapsable: false,
+          collapsable: true,
           children: [
             "weixin/"
           ]
