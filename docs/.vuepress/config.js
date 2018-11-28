@@ -61,7 +61,7 @@ module.exports = {
       },
       {
         text: "扩展阅读",
-        link: "/more/"
+        link: "/more/performanceOptimization"
       },
       {
         text: '资源',
@@ -212,7 +212,10 @@ module.exports = {
         {
           title: "扩展阅读",
           collapsable: false,
-          children: [""]
+          children: [
+            // "",
+            "performanceOptimization"
+          ]
         }
       ]
     }
