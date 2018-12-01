@@ -30,7 +30,7 @@ module.exports = {
     editLinkText: "欢迎指正",
     sidebarDepth: 3,
     displayAllHeaders: true,
-    lastUpdated: "上次更新",
+    // lastUpdated: "上次更新",
     serviceWorker: {
       updatePopup: true // Boolean | Object, 默认值是 undefined.
       // 如果设置为 true, 默认的文本配置将是:
@@ -42,7 +42,7 @@ module.exports = {
     nav: [
       {
         text: "前端技术栈",
-        link: "/base/"
+        link: "/base/js/dom-event"
         // items: [
         //   { text: "JavaScript", link: "/base/js/" },
         //   { text: "CSS", link: "/base/css/" },
@@ -70,13 +70,13 @@ module.exports = {
     ],
     sidebar: {
       "/base/": [
-        {
+        /* {
           title: "前端技术栈",
           collapsable: false,
           children: [
             ''
           ]
-        },
+        }, */
         {
           title: "JavaScript",
           collapsable: true,

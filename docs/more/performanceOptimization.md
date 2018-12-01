@@ -1,6 +1,8 @@
-# 前端性能优化
+# [前端性能优化](https://coding.imooc.com/class/chapter/130.html)
 
-`  WEB前端本质上是一种GUI软件，本可以直接借鉴其它GUI系统架构设计方案，但WEB前端有点特别：传统的CS架构的GUI软件，是软件开发完后，将软件打包发布到相关的应用平台上，需要用户从应用平台下载到本地解压安装后使用，实际上用户在使用软件时，用户本地是在访问本地的一些资源，而WEB前端（BS架构）则是开发完后将代码发布到服务器、cdn上，用户使用时，只需要通过浏览器访问网址，而浏览器则会向远程的服务器发送请求，服务器返回相关资源，这个过程是一个动态的增量的加载相关资源；所以缩短服务器向浏览器返回数据的时间就能让客户的体验更好；`
+[思维导图](https://processon.com/view/59e74772e4b05f52bada3e27)
+
+  WEB前端本质上是一种GUI软件，本可以直接借鉴其它GUI系统架构设计方案，但WEB前端有点特别：传统的CS架构的GUI软件，是软件开发完后，将软件打包发布到相关的应用平台上，需要用户从应用平台下载到本地解压安装后使用，实际上用户在使用软件时，用户本地是在访问本地的一些资源，而WEB前端（BS架构）则是开发完后将代码发布到服务器、cdn上，用户使用时，只需要通过浏览器访问网址，而浏览器则会向远程的服务器发送请求，服务器返回相关资源，这个过程是一个动态的增量的加载相关资源；所以缩短服务器向浏览器返回数据的时间就能让客户的体验更好。
 
 首先了解一下，浏览器的一个请求从发送到返回都经历了什么？
 <div align="center">
@@ -183,3 +185,138 @@ html 页面加载渲染的过程
 7. 动画实现的速度的选择
 8. 对于动画新建图层
 9. 启用 GPU 硬件加速
+
+## 浏览器存储
+
+### Cookie
+
+**优点：**
+  1. 因为HTTP请求无状态，所以需要cookie去维持客户端状态
+  2. 过期时间expire
+  3. cookie的生成方式：
+    * http response header中的set-cookie
+    * js中可以通过document.cookie可以读写cookie
+
+**缺点：**
+  1. 仅仅作为浏览器存储，大小4KB左右，能力被localstorage代替
+  2. ookie在相关域名下面都会携带， cdn的流量损耗，`解决方法：cdn 的域名和主站域名分开`
+
+::: tip HttpOnly
+  如果在Cookie中设置了HttpOnly属性，那么通过js脚本将无法读取到cookie信息，这样能有效的防止XSS攻击
+:::
+
+### LocalStorage与SessionStorage
+
+**相同点：**
+  1. HTML5设计出来专门用于浏览器存储的
+  2. 大小为5M左右
+  3. 仅在客户端使用，不与服务端进行通信
+  4. 接口封装较好
+
+**异同点：**
+  1. Sessionstorage为会话级别的浏览器存储（可用于表单信息的维护）
+  2. LocalStorage浏览器本地缓存的方案
+
+### IndexDB
+
+1. IndexedDB 是一种低级API，用于客户端存储大量结构化数据(包括, 文件/ blobs)。该API使用索引来实现对该数据的高性能搜索。虽然 Web Storage 对于存储较少量的数据很有用，但对于存储更大量的结构化数据来说，这种方法不太有用。IndexedDB提供了一个解决方案。
+2. 为应用创建离线版本
+
+具体使用方法可以查看：
+* [浏览器数据库 IndexedDB 入门教程](http://www.ruanyifeng.com/blog/2018/07/indexeddb.html)
+* [MDN web docs IndexedDB](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API)
+
+### Service Worker
+
+  Service Worker 是一个脚本，浏览器独立与当前网页，将其在后台运行，为实现一些不依赖页面或者用户交互的特性打开了一扇大门。在未来这些特性将包括推送消息，背景后台同步，Gepfencing(地理围栏定位)，但它将推出的第一个首要特性，就是拦截和处理网络请求的能力，包括以编程方式来管理被缓存的响应。
+
+  * 使用拦截和处理网络请求的能力，去实现一个离线应用
+  * 使用Service Worker 在后台运行的同时能和页面通信的能力，去实现大规模后台数据的处理
+
+**Service Worker 的生命周期**
+  <div align="center">
+    <img src="./performanceOptimization/3.png"/>
+  </div>
+
+Chrome内置的Service Worker工具：
+
+* <a href="chrome://serviceworker-internals/" target="_blank">chrome://serviceworker-internals/</a>
+* <a href="chrome://inspect/#service-workers" target="_blank">chrome://inspect/#service-workers</a>
+
+### [PWA](https://lavas.baidu.com/pwa)
+
+Progressive Web App, 简称 PWA，是提升 Web App 的体验的一种新方法，能给用户原生应用的体验。
+
+PWA 能做到原生应用的体验不是靠特指某一项技术，而是经过应用一些新技术进行改进，在安全、性能和体验三个方面都有很大提升，PWA 本质上是 Web App，借助一些新技术也具备了 Native App 的一些特性，兼具 Web App 和 Native App 的优点。
+
+PWA 的主要特点包括下面三点：
+  * 可靠 - 即使在不稳定的网络环境下，也能瞬间加载并展现
+  * 体验 - 快速响应，并且有平滑的动画响应用户的操作
+  * 粘性 - 像设备上的原生应用，具有沉浸式的用户体验，用户可以添加到桌面
+
+PWA 本身强调渐进式，并不要求一次性达到安全、性能和体验上的所有要求，开发者可以通过 PWA Checklist 查看现有的特征。
+[Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=zh-CN)这款chrome插件可以帮助你测试网站或软件
+
+* `Vue`的PWA解决方案[LAVAS](https://lavas.baidu.com/)
+
+## 缓存
+
+缓存是优化性能、提升体验是一个重要方案。HTTP协议里也包含了控制缓存的部分，通过Cache-Control首部字段来控制，将响应数据缓存至浏览器本地或Web代理中，以达到减少网络延迟及数据传输的开销。
+  <div align="center">
+    <img src="./performanceOptimization/4.jpg"/>
+  </div>
+
+### Cache-Control
+
+  可设置的属性值max-age 最大缓存时间，优先级高，s-maxage，public，private，no-cache，no-store
+  <div align="center">
+    <img src="./performanceOptimization/5.jpg"/>
+  </div>
+
+  资源的缓存策略主要还是在服务器端控制，在响应头中设置Cache-Control参数，可按下图中的维度与步骤来设计：
+  <div align="center">
+    <a href="https://zhuanlan.zhihu.com/p/29697651" target="_blank">
+      <img src="./performanceOptimization/6.jpg"/>
+    </a>
+  </div>
+
+  1. 响应是否可复用，有的场景缓存命中率很低，就没必要设置缓存，设置 Cache-Control:no-store 指令；
+  2. 响应可复用时，首先看客户端对数据一致性要求，强一致则需要设置Cache-Control:no-cache 指令，客户端在使用缓存的资源之前，必须先与服务器确认资源是否有变更，如果资源未被更改，可以避免下载。验证响应是否被修改，是通过请求头If-None-match和响应头ETag来实现的；
+  3. 响应可复用时，还要考虑缓存是否能共用，Cache-Control:public 指响应可在Web代理中缓存，多个客户端可共用该响应；Cache-Control:private 指响应只缓存中客户端本地，只能自己使用；
+  4. 最后要设置缓存过期时间，在max-age指定的时间之内，客户端不会向服务器发送任何请求，包括验证缓存是否有效的请求，也就是说，如果在这段时间之内，服务器上的资源发生了变化，那么客户端将不能感知，仍使用老版本数据。所以在设置缓存时间时，需要慎重。
+
+::: tip 常见的组合有：
+  * Cache-Control: private,no-cache,max-age=0 
+  * Cache-Control: public, max-age=7200
+:::
+
+### Expires
+  * 缓存过期时间，用来指定资源到期的时间，是服务器端的具体时间点
+  * 告诉浏览器在过期时间前可以直接从浏览器缓存中读取数据，而无需再次请求
+
+### Last-Modified/If-Modified-Since
+
+* 基于客户端和服务端协商的缓存机制
+* last-modified -- response header
+* if-modified-since -- request header
+* 需要与cache-control共同使用
+* 缺点：
+  * 某些服务端不能获取精确的修改时间
+  * 文件修改时间改了，但文件内容却没有变
+
+### Etag/If-None-Match
+
+* 文件内容的hash值
+* Etag -- response header
+* if-none-match -- request header
+* 需要与cache-control共同使用
+
+**分级缓存策略**
+ <div align="center">
+    <img src="./performanceOptimization/7.png"/>
+  </div>
+
+[流程图](https://www.cnblogs.com/etoah/p/5579622.html)
+  <div align="center">
+    <img src="./performanceOptimization/8.png"/>
+  </div>
