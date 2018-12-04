@@ -51,17 +51,17 @@ module.exports = {
         //   { text: "命令行工具", link: "/base/command/" }
         // ]
       },
-      {
-        text: "框架",
-        // link: '/framework/'
-        items: [
-          { text: "Vue", link: "/framework/vue/" },
-          { text: "React", link: "/framework/react/" }
-        ]
-      },
+      // {
+      //   text: "框架",
+      //   // link: '/framework/'
+      //   items: [
+      //     { text: "Vue", link: "/framework/vue/" },
+      //     { text: "React", link: "/framework/react/" }
+      //   ]
+      // },
       {
         text: "扩展阅读",
-        link: "/more/performanceOptimization"
+        link: "/more/web-optimization"
       },
       {
         text: '资源',
@@ -85,7 +85,8 @@ module.exports = {
             'js/scopechain',
             "js/prototype",
             "js/class",
-            'js/generator'
+            'js/package-compiled',
+            'js/generator',
           ]
         },
         {
@@ -93,6 +94,16 @@ module.exports = {
           collapsable: true,
           children: [
             "css/box-model"
+          ]
+        },
+        {
+          title: '前端框架',
+          collapsable: true,
+          children: [
+            "framework/vdom.md",
+            "framework/mvvm-vue.md",
+            "framework/react-component.md",
+            "framework/vuex.md"
           ]
         },
         {
@@ -167,7 +178,7 @@ module.exports = {
       //     ]
       //   }
       // ],
-      "/framework/vue/": [
+      /* "/framework/vue/": [
         {
           title: "Vue",
           collapsable: true,
@@ -200,7 +211,7 @@ module.exports = {
           collapsable: false,
           children: [""]
         }
-      ],
+      ], */
       "/source/": [
         {
           title: '前端资源',
@@ -214,7 +225,7 @@ module.exports = {
           collapsable: false,
           children: [
             // "",
-            "performanceOptimization"
+            "web-optimization"
           ]
         }
       ]
