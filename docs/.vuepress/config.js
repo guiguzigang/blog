@@ -63,10 +63,10 @@ module.exports = {
         text: "扩展阅读",
         link: "/more/web-optimization"
       },
-      {
-        text: '资源',
-        link: '/source/'
-      }
+      // {
+      //   text: '资源',
+      //   link: '/source/'
+      // }
     ],
     sidebar: {
       "/base/": [
