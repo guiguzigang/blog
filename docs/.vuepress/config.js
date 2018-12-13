@@ -87,6 +87,7 @@ module.exports = {
             "js/class",
             'js/package-compiled',
             'js/generator',
+            'js/equal-operator'
           ]
         },
         {
@@ -109,7 +110,7 @@ module.exports = {
         {
           title: "NodeJs",
           collapsable: true,
-          children: ["node/"]
+          children: ["node/npm-publish"]
         },
         {
           title: "HTTP协议",
